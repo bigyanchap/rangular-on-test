@@ -1,0 +1,311 @@
+/**
+ * Rangular Material design tokens, pure TypeScript, no react-native imports.
+ * Every visual value in a generated app comes from here; generated code never
+ * contains magic numbers. See docs/UI_POLISH.md.
+ */
+
+export const spacing = {
+  xs: 4, sm: 8, md: 12, lg: 16, xl: 20, xxl: 24, xxxl: 32,
+} as const;
+export const spacingScale: number[] = [4, 8, 12, 16, 20, 24, 32];
+
+export const radius = {
+  sm: 8, md: 12, lg: 16, xl: 20, full: 9999,
+} as const;
+export const radiusScale: number[] = [8, 12, 16, 20, 9999];
+
+export interface TypeStep { fontSize: number; lineHeight: number; fontWeight: string }
+
+export const typeScale: Record<'caption' | 'body' | 'bodyLarge' | 'label' | 'title' | 'heading' | 'display', TypeStep> = {
+  caption: { fontSize: 12, lineHeight: 16, fontWeight: '400' },
+  body: { fontSize: 14, lineHeight: 20, fontWeight: '400' },
+  bodyLarge: { fontSize: 16, lineHeight: 24, fontWeight: '400' },
+  label: { fontSize: 14, lineHeight: 20, fontWeight: '600' },
+  title: { fontSize: 20, lineHeight: 28, fontWeight: '600' },
+  heading: { fontSize: 24, lineHeight: 32, fontWeight: '700' },
+  display: { fontSize: 32, lineHeight: 40, fontWeight: '700' },
+};
+
+/**
+ * Colour roles, the same role names exist in both modes, always.
+ *
+ * Stage 4 completed the set to the full Material 3 role list the polish
+ * system needs. Two naming families coexist on purpose:
+ *  - the Material names (onSurface, onSurfaceVariant, error, ...) and
+ *  - the original Rangular aliases (text === onSurface,
+ *    textMuted === onSurfaceVariant, danger === error, border is the
+ *    hairline colour next to outline).
+ * Aliases always carry the SAME value as their Material counterpart in
+ * each mode, existing code referencing the old names keeps working and
+ * keeps meaning the same thing.
+ */
+export interface ColourRoles {
+  primary: string;
+  onPrimary: string;
+  primaryContainer: string;
+  onPrimaryContainer: string;
+  secondary: string;
+  secondaryContainer: string;
+  onSecondaryContainer: string;
+  accent: string;
+  background: string;
+  surface: string;
+  surfaceVariant: string;
+  onSurface: string;
+  onSurfaceVariant: string;
+  text: string;
+  textMuted: string;
+  error: string;
+  onError: string;
+  danger: string;
+  // Success (switch colour round, 2026-11-21): the green a
+  // switch paints when on with color="success". The dark
+  // theme lifts it the way the error role lifts, so the on
+  // state reads on a dark surface too.
+  success: string;
+  border: string;
+  outline: string;
+  scrim: string;
+  avatar: string;
+  onAvatar: string;
+  // Code block (tutorial round, 2026-11-13): an editor surface that
+  // is dark on purpose in BOTH themes, the way editors look, so a
+  // code sample never reads as body text.
+  codeSurface: string;
+  codeText: string;
+  // Toast (tutorial round, 2026-11-13): the SnackBar toast card is
+  // a translucent black surface, dark in both themes. The surface
+  // carries its own 85 percent alpha (eight digit hex); the text
+  // and action colours are chosen to read on near black.
+  toastSurface: string;
+  toastText: string;
+  toastAction: string;
+  // Brand gradient (gradient shell round, 2026-11-17): the three
+  // stops of the one brand gradient, drawn by RgGradient and the
+  // gradient app bar. The same stops in both modes on purpose: a
+  // brand band does not change with the theme, the way the code
+  // surface does not. The stops were purple until the dressed
+  // round (2026-11-21), when the framework's default dress became
+  // the tutorial samples' language at his pick: the gradient is
+  // blue now, the container is the samples' light tint, and the
+  // success role is the Gmail green the samples check with.
+  gradientFrom: string;
+  gradientVia: string;
+  gradientTo: string;
+  // The soft wash (seamless round, 2026-11-18): a near-flat
+  // vertical gradient for the tint app bar, three stops that
+  // start a breath deeper than the page and land on it, so the
+  // bar melts into the page instead of ending at a seam. And
+  // primaryDeep, the filled button's lower stop: the same hue
+  // one step deeper, so a button reads as lit from above.
+  washFrom: string;
+  washVia: string;
+  washTo: string;
+  primaryDeep: string;
+  // Button gradients (gradient button round, 2026-11-24): every
+  // filled button is a three-stop diagonal gradient in its role's
+  // hue family, light at the top left and deep at the bottom
+  // right, the language of the brand band. The stops are the
+  // same in both modes on purpose, like the brand gradient: a
+  // button is a brand surface, not a code surface, so its label
+  // is onGradient white in both modes too, and the light
+  // secondary member keeps its primary-blue label in both modes.
+  // Hi is the light stop, Via the role's base, Deep the bottom
+  // stop. warningText is the one themed field: a text-form
+  // warning label needs a deep amber on light surfaces and a
+  // light one on dark.
+  onGradient: string;
+  primaryHi: string;
+  dangerHi: string;
+  dangerVia: string;
+  dangerDeep: string;
+  warningHi: string;
+  warningVia: string;
+  warningDeep: string;
+  warningText: string;
+  successHi: string;
+  successVia: string;
+  successDeep: string;
+  neutralHi: string;
+  neutralVia: string;
+  neutralDeep: string;
+  secondaryHi: string;
+  secondaryVia: string;
+  secondaryDeep: string;
+  secondaryBorder: string;
+  secondaryLabel: string;
+  disabledHi: string;
+  disabledVia: string;
+  disabledDeep: string;
+}
+
+export const colours: Record<'light' | 'dark', ColourRoles> = {
+  light: {
+    primary: '#0b57d0',
+    onPrimary: '#ffffff',
+    primaryContainer: '#e8f0fe',
+    onPrimaryContainer: '#041e49',
+    secondary: '#00639b',
+    secondaryContainer: '#cde6ff',
+    onSecondaryContainer: '#001d32',
+    accent: '#0b57d0',
+    background: '#ffffff',
+    surface: '#ffffff',
+    surfaceVariant: '#f0f4f9',
+    onSurface: '#1f1f1f',
+    onSurfaceVariant: '#5f6368',
+    text: '#1f1f1f',
+    textMuted: '#5f6368',
+    error: '#b3261e',
+    onError: '#ffffff',
+    danger: '#b3261e',
+    success: '#34a853',
+    border: '#dadce0',
+    outline: '#747775',
+    scrim: '#000000',
+    avatar: '#7b1fa2',
+    onAvatar: '#ffffff',
+    codeSurface: '#1e1e1e',
+    codeText: '#d4d4d4',
+    toastSurface: '#000000d9',
+    toastText: '#f1f3f4',
+    toastAction: '#a8c7fa',
+    gradientFrom: '#0849ad',
+    gradientVia: '#0b57d0',
+    gradientTo: '#4285f4',
+    washFrom: '#dde7f5',
+    washVia: '#e9eff8',
+    washTo: '#fbfcfe',
+    primaryDeep: '#0849ad',
+    onGradient: '#ffffff',
+    primaryHi: '#6ea8ff',
+    dangerHi: '#f08379',
+    dangerVia: '#d93025',
+    dangerDeep: '#a50e0e',
+    warningHi: '#fbbc04',
+    warningVia: '#f29900',
+    warningDeep: '#e37400',
+    warningText: '#b06000',
+    successHi: '#5fbf77',
+    successVia: '#34a853',
+    successDeep: '#20713a',
+    neutralHi: '#bdc1c6',
+    neutralVia: '#80868b',
+    neutralDeep: '#5f6368',
+    secondaryHi: '#ffffff',
+    secondaryVia: '#eef3fd',
+    secondaryDeep: '#dbe7fc',
+    secondaryBorder: '#c6dafc',
+    secondaryLabel: '#0b57d0',
+    disabledHi: '#eef0f2',
+    disabledVia: '#e3e5e8',
+    disabledDeep: '#dadce0',
+  },
+  dark: {
+    primary: '#a8c7fa',
+    onPrimary: '#062e6f',
+    primaryContainer: '#004a77',
+    onPrimaryContainer: '#d3e3fd',
+    secondary: '#8ecbf2',
+    secondaryContainer: '#004b70',
+    onSecondaryContainer: '#cde6ff',
+    accent: '#a8c7fa',
+    background: '#131314',
+    surface: '#1e1f20',
+    surfaceVariant: '#282a2c',
+    onSurface: '#e3e3e3',
+    onSurfaceVariant: '#9aa0a6',
+    text: '#e3e3e3',
+    textMuted: '#9aa0a6',
+    error: '#f2b8b5',
+    onError: '#601410',
+    danger: '#f2b8b5',
+    success: '#81c995',
+    border: '#444746',
+    outline: '#8e918f',
+    scrim: '#000000',
+    avatar: '#d0bcff',
+    onAvatar: '#381e72',
+    codeSurface: '#1e1e1e',
+    codeText: '#d4d4d4',
+    toastSurface: '#000000d9',
+    toastText: '#f1f3f4',
+    toastAction: '#a8c7fa',
+    gradientFrom: '#0849ad',
+    gradientVia: '#0b57d0',
+    gradientTo: '#4285f4',
+    washFrom: '#262c38',
+    washVia: '#1e242e',
+    washTo: '#14161a',
+    primaryDeep: '#8fb4f5',
+    onGradient: '#ffffff',
+    primaryHi: '#6ea8ff',
+    dangerHi: '#f08379',
+    dangerVia: '#d93025',
+    dangerDeep: '#a50e0e',
+    warningHi: '#fbbc04',
+    warningVia: '#f29900',
+    warningDeep: '#e37400',
+    warningText: '#f9ab00',
+    successHi: '#5fbf77',
+    successVia: '#34a853',
+    successDeep: '#20713a',
+    neutralHi: '#bdc1c6',
+    neutralVia: '#80868b',
+    neutralDeep: '#5f6368',
+    secondaryHi: '#ffffff',
+    secondaryVia: '#eef3fd',
+    secondaryDeep: '#dbe7fc',
+    secondaryBorder: '#c6dafc',
+    secondaryLabel: '#0b57d0',
+    disabledHi: '#eef0f2',
+    disabledVia: '#e3e5e8',
+    disabledDeep: '#dadce0',
+  },
+};
+
+/** One elevation preset: an RN shadow style object, never free-hand values. */
+export interface ElevationPreset {
+  shadowColor: string;
+  shadowOpacity: number;
+  shadowRadius: number;
+  shadowOffset: { width: number; height: number };
+  elevation: number;
+}
+
+/** Elevation presets, 3 named levels (docs/UI_POLISH.md part 1). */
+export const elevation: Record<'level0' | 'level1' | 'level2', ElevationPreset> = {
+  level0: {
+    shadowColor: '#000000', shadowOpacity: 0, shadowRadius: 0,
+    shadowOffset: { width: 0, height: 0 }, elevation: 0,
+  },
+  level1: {
+    shadowColor: '#000000', shadowOpacity: 0.15, shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 }, elevation: 1,
+  },
+  level2: {
+    shadowColor: '#000000', shadowOpacity: 0.25, shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 }, elevation: 3,
+  },
+};
+
+export type ThemeMode = 'light' | 'dark';
+
+export interface Theme {
+  mode: ThemeMode;
+  spacing: typeof spacing;
+  radius: typeof radius;
+  typography: typeof typeScale;
+  colors: ColourRoles;
+  elevation: typeof elevation;
+}
+
+export function theme(mode: ThemeMode): Theme {
+  return { mode, spacing, radius, typography: typeScale, colors: colours[mode], elevation };
+}
+
+/** Both themes as ready-made objects: `themes.light` / `themes.dark`. */
+export const themes: Record<ThemeMode, Theme> = {
+  light: theme('light'),
+  dark: theme('dark'),
+};

@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "rangular-test-project",
+    "slug": "rangular-test-project",
+    "version": "1.0.0",
+    "scheme": "rangular-test-project",
+    "orientation": "portrait",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  }
+}

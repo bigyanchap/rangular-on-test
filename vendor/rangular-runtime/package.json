@@ -1,0 +1,16 @@
+{
+  "description": "Small pure-TypeScript runtime helpers for generated Rangular apps (EventEmitter, signals, DI container).",
+  "license": "Apache-2.0",
+  "main": "src/index.ts",
+  "name": "@rangular-framework/runtime",
+  "types": "src/index.ts",
+  "version": "0.7.0",
+  "dependencies": {
+    "rxjs": "^7.8.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigyanchap/rangular-framework.git",
+    "directory": "packages/runtime"
+  }
+}
