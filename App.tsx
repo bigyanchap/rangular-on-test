@@ -22,6 +22,7 @@ export default function App() {
         </View>
       ))}
       <Text style={{ fontSize: 16, marginTop: 12 }}>Tapped:{hit}</Text>
+      <Text style={{ fontSize: 13, marginTop: 24, color: '#5f6368' }}>PLAIN EXPO TEST, NO RANGULAR</Text>
     </View>
   );
 }
